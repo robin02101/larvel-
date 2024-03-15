@@ -95,7 +95,7 @@ const submit = () => {
                 </Link>
 
                 <PrimaryButton class="ms-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Register
+                    注冊
                 </PrimaryButton>
             </div>
         </form>
