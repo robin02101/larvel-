@@ -7,6 +7,7 @@ export default {
         return{
             teachersName:'',
             teacherIntroduce:'',
+            teacherClass:'0',
         }
     },
     components: {
@@ -15,18 +16,25 @@ export default {
      
     },
     props:{
-       
+        
+        myClasses:{
+            type:Array,
+            required:true,
+        },
+   
     },
     methods:{
       
         addTeacher(){
             this.$inertia.post('/addTeacher',{
+                
+                teacherClass:this.teacherClass,
                 teacherName:this.teachersName,
                 teacherIntroduce:this.teacherIntroduce,
             },{
                 onSuccess: (res) =>{
                    const msg= res.props.flash.message;
-                    alert(msg);
+                   Swal.fire(msg);
                 } 
             })
         },
@@ -48,9 +56,9 @@ export default {
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="flex flex-col ml-4 mt-8">
                     課程
-                    <select class="mr-2 w-2/5">
-                        <option value="value1">請選擇課程</option>
-                        <option value="value2">國文</option>
+                    <select class="mr-2 w-2/5" v-model="teacherClass">
+                        <option value="0">請選擇課程</option>
+                        <option :value="myClass.className" v-for="(myClass,index) in myClasses" :key="myClass.id">{{myClass.className}}</option>
                     </select>
                    </div>
                    <div class="flex flex-col ml-4 mt-8">

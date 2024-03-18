@@ -43,8 +43,10 @@ Route::get('/', function () {
 });
 Route::get('/CourseClass', [TestController::class,'index'])->middleware(['auth', 'verified']);
 
-Route::get('/text', [TestController::class,'indexTeacher'])->middleware(['auth', 'verified']);
 
+Route::get('/text', [TestController::class,'indexTeacher'])->middleware(['auth', 'verified']);
+Route::get('/addTeacher', [TestController::class,'classIndex'])->middleware(['auth', 'verified']);
+Route::get('/changeTeacher', [TestController::class,'classIndex2'])->middleware(['auth', 'verified']);
 
 // Route::get('/text', function () {
 //     return Inertia::render('text');
@@ -66,13 +68,13 @@ Route::get('/changeClass', function () {
     return Inertia::render('changeClass');
 })->middleware(['auth', 'verified']);
 
-Route::get('/addTeacher', function () {
-    return Inertia::render('addTeacher');
-})->middleware(['auth', 'verified']);
+// Route::get('/addTeacher', function () {
+//     return Inertia::render('addTeacher');
+// })->middleware(['auth', 'verified']);
 
-Route::get('/changeTeacher', function () {
-    return Inertia::render('changeTeacher');
-})->middleware(['auth', 'verified']);
+// Route::get('/changeTeacher', function () {
+//     return Inertia::render('changeTeacher');
+// })->middleware(['auth', 'verified']);
 
 
 Route::get('/changeSemester', function () {

@@ -47,9 +47,9 @@ export default {
                                     <td>113</td>
                                    <td>上</td>
                                     <td class="flex gap-3">
-                                        <button class="rounded text-white bg-green-500 p-2">
+                                        <!-- <button class="rounded text-white bg-green-500 p-2">
                                            寄送
-                                        </button>
+                                        </button> -->
                                         <Link href="/changeSemester"><button class="rounded text-white bg-blue-500 p-2">
                                                 編輯
                                         </button></Link>

@@ -25,7 +25,7 @@ export default {
             },{
                 onSuccess: (res) =>{
                    const msg= res.props.flash.message;
-                    alert(msg);
+                   Swal.fire(msg);
                 } 
             })
         },

@@ -23,7 +23,7 @@ export default {
             this.$inertia.post('/removeTeacher',{id:id,},{
                 onSuccess: (res) =>{
                    const msg= res.props.flash.message;
-                    alert(msg);
+                   Swal.fire(msg);
                 } 
                
             });
@@ -60,8 +60,8 @@ export default {
                         </tr>
                     </thead> 
                     <tbody>
-                        <tr v-for="item in teacher" :key="item.id">
-                                    <td>{{ item.id }}</td>
+                        <tr v-for="(item,index) in teacher" :key="item.id">
+                                    <td>{{ index+1 }}</td>
                                     <td class="w-3/5 text-center">{{ item.teacherName }}</td>
                                    
                                     <td class="flex gap-3">

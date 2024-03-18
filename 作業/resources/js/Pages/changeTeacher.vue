@@ -8,6 +8,8 @@ export default {
             editTeachername:this.teacher.id.teacherName,
             editTeacherintroduce:this.teacher.id.teacherIntroduce,
            id:this.teacher.id.id ,
+          
+           editteacherClass:this.teacher.id.teacherClass,
         } 
     },
     components: {
@@ -20,6 +22,10 @@ export default {
         type:Array,
         required:true,
       },
+      myClasses:{
+            type:Array,
+            required:true,
+        },
     },
     methods:{
        
@@ -28,10 +34,11 @@ export default {
                id:this.id,
                teacherName:this.editTeachername,
                teacherIntroduce:this.editTeacherintroduce,
+               teacherClass:this.editteacherClass,
            },{
                onSuccess: (res) =>{
                   const msg= res.props.flash.message;
-                   alert(msg);
+                  Swal.fire(msg);
                } 
            })
        },
@@ -53,9 +60,9 @@ export default {
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="flex flex-col ml-4 mt-8">
                     課程
-                    <select class="mr-2 w-2/5">
-                        <option value="value1">國文</option>
-                        
+                    <select class="mr-2 w-2/5" v-model="editteacherClass">
+                       
+                        <option :value="myClass.className" v-for="(myClass,index) in myClasses" :key="myClass.id">{{myClass.className}}</option>
                     </select>
                    </div>
                    <div class="flex flex-col ml-4 mt-8">

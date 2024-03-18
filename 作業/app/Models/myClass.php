@@ -12,4 +12,8 @@ class myClass extends Model
         'className',
         'classIntroduce',
      ];
+    //  public function teacher()
+    // {       //回應
+    //     return $this->hasMany(teacher::class,'classId','id');
+    // }
 }

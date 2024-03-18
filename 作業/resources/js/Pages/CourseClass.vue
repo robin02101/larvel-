@@ -10,6 +10,7 @@ export default {
     components: {
             Link,
          AuthenticatedLayout,
+        
      
     },
     props:{
@@ -41,7 +42,18 @@ export default {
                 } 
                
             });
+        },
+        returnId(){
+            this.$inertia.get('/CourseClass', { 
+                rule:1,
+             });
+        },
+        allId(){
+            this.$inertia.get('/CourseClass', { 
+                rule:0,
+             });
         }
+
     },
 };
 </script>
@@ -59,6 +71,12 @@ export default {
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 w-3/5">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <Link href="/saveClass"><button type="button" class="bg-green-500 ml-1 mt-1 mb-1 p-2 rounded text-white">新增</button></Link>
+                    <button @click="returnId" class="rounded text-white bg-red-500 p-2">
+                                            取id19以下
+                                        </button>
+                                        <button @click="allId" class="rounded text-white bg-red-500 p-2">
+                                            取全部
+                                        </button>
                     <table class="min-w-full divide-y divide-gray-200">
                       <thead> 
                         <tr>
@@ -69,8 +87,8 @@ export default {
                         </tr>
                     </thead> 
                     <tbody >
-                        <tr v-for="item in myClasses" :key="item.id">
-                                    <td>{{item.id}}</td>
+                        <tr v-for="(item,index) in myClasses" :key="item.id">
+                                    <td>{{index+1}}</td>
                                     <td>{{item.className}}</td>
                                     <td>圖片</td>
                                     <td class="flex gap-3">
@@ -82,6 +100,7 @@ export default {
                                         <button @click="removeClasses(item.id)" class="rounded text-white bg-red-500 p-2">
                                             刪除
                                         </button>
+                                        
                                     </td>
                                 </tr>
 
